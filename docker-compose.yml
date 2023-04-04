@@ -6,6 +6,8 @@ services:
     restart: always
     volumes:
     - ./main.go:/go/src/github.com/olivere/go-container-debugging/main.go
+    - ./go.mod:/go/src/github.com/olivere/go-container-debugging/go.mod
+    - ./go.sum:/go/src/github.com/olivere/go-container-debugging/go.sum
     ports:
       - "8080:8080"
       - "2345:2345"
