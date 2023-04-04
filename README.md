@@ -6,6 +6,9 @@ A simple example of debugging a Go application running in a Docker container.
 - docker compose up
 - lauch debugger (This starts the go application)
 
+## Notes
+- To see code changes you do need to restart the debugger after each change. Not sure if there is a nodemon equivalent for Go. Will look into it.
+
 ## Debug configuration example
 ```
 {

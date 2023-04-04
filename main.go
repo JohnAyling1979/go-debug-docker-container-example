@@ -20,12 +20,12 @@ func main() {
 		vars := mux.Vars(r)
 		name := vars["name"]
 
-		changeTest := "test 6:40"
+		changeTest := "test 7:16"
 		var message string
 		if name == "" {
 			message = "Hello World"
 		} else {
-			message = "Hello " + name + " " + changeTest
+			message = "Hello " + name + " it's " + changeTest
 		}
 		response := map[string]string{
 			"message": message,
