@@ -1,4 +1,4 @@
-module github.com/olivere/go-container-debugging
+module go-container-debugging
 
 go 1.18
 
