@@ -1,6 +1,10 @@
-## Run
+### Debugging Go application running in a Docker container
+
+A simple example of debugging a Go application running in a Docker container.
+
+## To Run
 - docker compose up
-- lauch debgger
+- lauch debugger (This starts the go application)
 
 ## Debug configuration example
 ```
