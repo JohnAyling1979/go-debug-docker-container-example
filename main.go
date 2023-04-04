@@ -10,37 +10,36 @@ import (
 )
 
 func main() {
-  log.Println("Main function started")
- router := mux.NewRouter()
+	router := mux.NewRouter()
 
- router.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
-   response := map[string]string{
-     "message": "Welcome to Dockerized app",
-   }
-   json.NewEncoder(rw).Encode(response)
- })
+	router.HandleFunc("/favicon.ico", func(rw http.ResponseWriter, r *http.Request) {
+		json.NewEncoder(rw).Encode("favicon.ico")
+	})
 
- router.HandleFunc("/favicon.ico", func(rw http.ResponseWriter, r *http.Request) {
-    json.NewEncoder(rw).Encode("favicon.ico")
-  })
+	router.HandleFunc("/{name}", func(rw http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+		name := vars["name"]
 
- router.HandleFunc("/{name}", func(rw http.ResponseWriter, r *http.Request) {
-   vars := mux.Vars(r)
-   name := vars["name"]
+		changeTest := "test 6:40"
+		var message string
+		if name == "" {
+			message = "Hello World"
+		} else {
+			message = "Hello " + name + " " + changeTest
+		}
+		response := map[string]string{
+			"message": message,
+		}
+		json.NewEncoder(rw).Encode(response)
+	})
 
-   changeTest := "test 6:40"
-   var message string
-   if name == "" {
-     message = "Hello World"
-   } else {
-     message = "Hello " + name + " " + changeTest
-   }
-   response := map[string]string{
-     "message": message,
-   }
-   json.NewEncoder(rw).Encode(response)
- })
+	router.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
+		response := map[string]string{
+			"message": "Welcome to Dockerized app",
+		}
+		json.NewEncoder(rw).Encode(response)
+	})
 
- log.Println("Server is running!")
- fmt.Println(http.ListenAndServe(":8080", router))
+	log.Println("Server is running!")
+	fmt.Println(http.ListenAndServe(":8080", router))
 }
