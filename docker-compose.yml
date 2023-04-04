@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  go_server:
+    build: .
+    volumes:
+    - .:/go/src/github.com/olivere/go-container-debugging
+    ports:
+      - "8080:8080"
+      - "2345:2345"
