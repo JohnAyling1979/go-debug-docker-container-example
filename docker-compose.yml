@@ -3,8 +3,9 @@ version: "3"
 services:
   go_server:
     build: .
+    restart: always
     volumes:
-    - .:/go/src/github.com/olivere/go-container-debugging
+    - ./main.go:/go/src/github.com/olivere/go-container-debugging/main.go
     ports:
       - "8080:8080"
       - "2345:2345"

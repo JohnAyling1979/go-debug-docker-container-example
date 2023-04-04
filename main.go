@@ -20,14 +20,20 @@ func main() {
    json.NewEncoder(rw).Encode(response)
  })
 
+ router.HandleFunc("/favicon.ico", func(rw http.ResponseWriter, r *http.Request) {
+    json.NewEncoder(rw).Encode("favicon.ico")
+  })
+
  router.HandleFunc("/{name}", func(rw http.ResponseWriter, r *http.Request) {
    vars := mux.Vars(r)
    name := vars["name"]
+
+   changeTest := "test 6:40"
    var message string
    if name == "" {
      message = "Hello World"
    } else {
-     message = "Hello " + name
+     message = "Hello " + name + " " + changeTest
    }
    response := map[string]string{
      "message": message,
